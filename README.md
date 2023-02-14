@@ -10,7 +10,6 @@ El entorno de de desarrollo para este proyecto: _.Net 4.7._
 
 Es necesario compilar la solución contenida en el directorio _LibPayrollSystem_. Luego, desde la solución que está en el directorio _PayrollSystemUI_ que contiene la GUI de la aplicación. Desde allí, y sin correr la solución, se importa la librería construida mediante la compilación que se hizo con anterioridad.
 
-Para Linux: _abrir una terminal en el directorio del proyecto y ejecutar:_
 __________________________
 __________________________
 
