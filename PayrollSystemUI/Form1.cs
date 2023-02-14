@@ -1,13 +1,5 @@
 ﻿using LibPayrollSystem;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PayrollSystemUI
@@ -70,35 +62,12 @@ namespace PayrollSystemUI
 
         private void btnCalculate_Click(object sender, EventArgs e)
         {
-            string isValidate;
-            int workingDays;
-            double netToPay;
-            
             string messageResponse = "";
+
+            PayrollSystemHandler payrollSystemHandler = new PayrollSystemHandler();
+
+            messageResponse = payrollSystemHandler.getServiceResponse(tbId.Text, tbName.Text, tbBasicSalary.Text, tbLoanInstallment.Text, tbComission.Text, tbWorkingDays.Text);
             
-            try
-            {
-                Employee employee = new Seller(tbId.Text, tbName.Text, Convert.ToDouble(tbBasicSalary.Text), Convert.ToDouble(tbLoanInstallment.Text), Convert.ToDouble(tbComission.Text));
-                Validate validate = new Validate();
-                PayrollSystem payrollSystem = new PayrollSystem();
-                Response response = new Response(); 
-                
-                workingDays = Convert.ToInt32(tbWorkingDays.Text);
-
-                isValidate = validate.validate(employee, workingDays);
-                
-                if(isValidate == "OK") {
-                    netToPay = payrollSystem.calculateNetToPay(employee, workingDays);
-                    messageResponse = response.getMessageResponseOk(employee, netToPay);
-                } else {
-                    messageResponse = response.getMessageValidateError();
-                }
-            }
-            catch (Exception exception)
-            {
-                messageResponse = exception.Message;
-            }
-
             tbResponse.Text = messageResponse;
         }
 
