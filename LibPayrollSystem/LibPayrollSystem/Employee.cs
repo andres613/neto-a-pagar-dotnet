@@ -14,7 +14,7 @@ namespace LibPayrollSystem
 
         double BasicSalary { get; set; }
 
-        //double LoanInstallment { get; set; }
+        double LoanInstallment { get; set; }
 
         double Comission { get; set; }
     }
